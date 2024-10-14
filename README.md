@@ -1,7 +1,7 @@
 Markdown
-# Customer Data Analysis
+# Customer Data Analysis (Excel)
 
-This project analyzes customer data to identify the number of unique customers who meet specific criteria related to age, service usage, and service dates.
+This project uses Excel to analyzes customer data and identify the number of unique customers who meet specific criteria related to age, service usage, and service dates.
 
 ## Key Findings
 
