@@ -39,9 +39,11 @@ This SQL query retrieves the unique customers who meet the following criteria:
 * Office: One of the specified offices: 425, 101, or 987.
 
 ```sql
-SELECT Office, COUNT(DISTINCT CustomerID) AS UniqueCustomerCount
+SELECT Office_No, COUNT(DISTINCT Customer_ID) AS UniqueYouthCustomers
 FROM service_table
-WHERE DATEDIFF(year, BirthDate, ServiceStartDate) <= 25
-  AND ServiceStartDate > '2022-10-01'
-  AND ServiceEndDate < '2024-02-01'
-GROUP BY Office;
+WHERE Service_Code IN (425, 101, 987)
+  AND Office_No IN (138, 139, 140, 141, 142, 147, 150, 155, 160, 162, 181, 262, 312, 432, 433)
+  AND Service_start > '2022-10-01'
+  AND Service_end < '2024-02-01'
+  AND DATEDIFF(YEAR, Service_start, DateOfBirth) <= 25
+GROUP BY Office_No;
