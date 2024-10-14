@@ -29,4 +29,19 @@ This project analyzes customer data to identify the number of unique customers w
   Duplicate records for the same customer. Ambiguous definitions of "Youth" (e.g., based on age at service start, end, or current age).
   Unclear criteria for determining service start and end dates (e.g., based on service creation, completion, or other factors).
   Data in a non-standard format (e.g., text instead of date).
- 
+
+ ## SQL Code to Count Unique Customers Meeting Criteria
+
+This SQL query retrieves the unique customers who meet the following criteria:
+
+* Age: 25 years or younger at the start of service.
+* Service dates: Started after 10/01/2022 and ended before 02/01/2024.
+* Office: One of the specified offices: 425, 101, or 987.
+
+```sql
+SELECT Office, COUNT(DISTINCT CustomerID) AS UniqueCustomerCount
+FROM service_table
+WHERE DATEDIFF(year, BirthDate, ServiceStartDate) <= 25
+  AND ServiceStartDate > '2022-10-01'
+  AND ServiceEndDate < '2024-02-01'
+GROUP BY Office;
